@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "common.h"
 #include <ctype.h>
-#include <string.h>
+// #include <string.h>
 #define MAX_SIZE 1024
 
 
@@ -14,7 +14,8 @@ int main(void)
 
     // printf("Enter the filename: ");
     // scanf("%s", filename);
-    fp = open(filename, "r+");
+    // fp = open(filename, "r+");
+    fp = fopen(filename, "r+");
 
     char tmp[MAX_SIZE];
     char * tmp_fp;
@@ -41,18 +42,23 @@ int main(void)
     //    fputs(tmp, fp);
     // }
     
-    
 
+    /**
+     * @brief 这个题我不想写！
+     * 
+     */
+    
+    long tmp_ind = 0L;
     while(!feof(fp))
     {  
         fgets(tmp, MAX_SIZE, fp);
-        // tmp[0] = 'C';
-        // puts(tmp);
-        // fseek(fp, -3L, SEEK_CUR);
-        // fputs(tmp, fp);
-        // fseek(fp, 0L, SEEK_CUR);
-        printf("%d\n", strlen(tmp));
-        putc('C', fp);
+        tmp_ind = (long)(strlen(tmp)+1);
+        current = ftell(fp);
+        fseek(fp, current-tmp_ind, SEEK_SET);
+        tmp[0] = 'X';
+        fputs(tmp, fp);
+        fseek(fp, current, SEEK_SET);            
+
     }  
 
     fclose(fp);
