@@ -15,5 +15,12 @@ char * s_gets(char * st, int n)
         {
             *find = '\0';;
         }
+        else
+        {
+            while (getchar() != '\n')
+                continue;   
+        }
     }
+
+    return ret_val;
 }
