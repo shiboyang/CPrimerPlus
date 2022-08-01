@@ -24,3 +24,10 @@ char * s_gets(char * st, int n)
 
     return ret_val;
 }
+
+void clean_line(void)
+{   
+    printf("clean line\n");
+    while (getchar() != '\n')
+        continue;    
+}
