@@ -25,9 +25,11 @@ int main(void)
     const int size = 100;
     int arr[size];
     int num;
+    // 置随机种子
     srand((unsigned int)time(0));
     for (int i=0; i<size; i++)
     {
+        //随机数字
         arr[i] = rand() % 10 +1;
     }
 
